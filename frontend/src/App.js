@@ -19,15 +19,16 @@ const App = () => {
     })
   },[f])
   let add=()=>{
+    if(data.tsk!==""}{
     let t=new Date()
-    setData({...data,"time":t.toLocaleTimeString()})
-        axios.post("http://localhost:5000/add",data).then((res)=>{
+        axios.post("http://localhost:5000/add",{...data,"time":"time":t.toLocaleTimeString()}).then((res)=>{
           if(res.data.msg!=="not saved"){
             setData({"tsk":"","time":"","status":"pending"})
             setF((f)=>!f)
           }
         })
         setS(false)
+    }
       }
       let edit=(ind)=>{
         setData(tdata[ind])
