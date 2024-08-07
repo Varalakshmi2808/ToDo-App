@@ -19,17 +19,18 @@ const App = () => {
     })
   },[f])
   let add=()=>{
-    if(data.tsk!==""}{
+    if(data.tsk!==""){
     let t=new Date()
-        axios.post("http://localhost:5000/add",{...data,"time":"time":t.toLocaleTimeString()}).then((res)=>{
+        axios.post("http://localhost:5000/add",{...data,"time":t.toLocaleTimeString()}).then((res)=>{
           if(res.data.msg!=="not saved"){
             setData({"tsk":"","time":"","status":"pending"})
             setF((f)=>!f)
           }
         })
         setS(false)
-    }
       }
+      }
+
       let edit=(ind)=>{
         setData(tdata[ind])
         setU(false)
@@ -45,6 +46,7 @@ const App = () => {
         })
         
       }
+
       let done=(ind)=>{
         let d={...tdata[ind],"status":"done"}
         console.log(d)
@@ -86,14 +88,13 @@ const App = () => {
             return(<tr>
             <td>{item.tsk}</td>
             <td>{item.time}</td>
-            {item.status!=="done"&&<td><button onClick={()=>{edit(index)}}>edit</button></td>}
-            {item.status!=="done" &&<td><button onClick={()=>done(index)}>Done</button></td>}
-            {item.status=="done" &&<td><i class="fa-solid fa-square-check tik"></i></td>}
+            <td>{item.status!=="done"&&<button onClick={()=>{edit(index)}}>edit</button>}
+            {item.status!=="done" &&<button onClick={()=>done(index)}>Done</button>}
+            {item.status=="done" &&<i class="fa-solid fa-square-check tik"></i>}</td>
             </tr>
             )
           })
         }
-      
       </table>}
       {s&& <ol className='tab2'>
         {
@@ -101,8 +102,7 @@ const App = () => {
             return(
               <li>{item}</li>)
           })
-        }
-       
+        } 
       </ol>
       }
       </div>
@@ -110,5 +110,4 @@ const App = () => {
     </div>
   )
 }
-
 export default App
